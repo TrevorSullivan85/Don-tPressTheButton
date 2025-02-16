@@ -369,3 +369,11 @@ animation = &"punch2"
 autoplay = "idle"
 frame = 1
 frame_progress = 0.019715
+
+[node name="StateMachine" type="Node" parent="."]
+
+[node name="idle" type="Node" parent="StateMachine"]
+
+[node name="move" type="Node" parent="StateMachine"]
+
+[node name="jump" type="Node" parent="StateMachine"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://paj7okq3dr4r"]
+[gd_scene load_steps=7 format=3 uid="uid://paj7okq3dr4r"]
 
 [ext_resource type="Texture2D" uid="uid://cu82sm31oy5so" path="res://Assets/TileSets/IndustrialSpritesheet.png" id="1_q3js6"]
 [ext_resource type="Texture2D" uid="uid://dpnb5ddgk62os" path="res://Assets/Items/3 Objects/Locker4.png" id="2_cy4u6"]
 [ext_resource type="Texture2D" uid="uid://lwap53ig1wje" path="res://Assets/Items/3 Objects/Mop.png" id="2_kgjtv"]
+[ext_resource type="PackedScene" uid="uid://b6tcdlqqhja4i" path="res://Scenes/node_2d.tscn" id="4_cq4jj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f4jtw"]
 texture = ExtResource("1_q3js6")
@@ -180,3 +181,6 @@ texture = ExtResource("2_kgjtv")
 [node name="Locker4" type="Sprite2D" parent="Decor"]
 position = Vector2(-111, -17)
 texture = ExtResource("2_cy4u6")
+
+[node name="Player" parent="Decor" instance=ExtResource("4_cq4jj")]
+position = Vector2(-62, -5)

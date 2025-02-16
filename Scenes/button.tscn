@@ -1,5 +1,46 @@
-[gd_scene format=3 uid="uid://cxjfkm2dryrps"]
+[gd_scene load_steps=7 format=3 uid="uid://cxjfkm2dryrps"]
 
-[node name="button" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://bhimok7mc47gn" path="res://Assets/Props/4 Animated objects/Screen2.png" id="1_lyv5l"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kkl1"]
+atlas = ExtResource("1_lyv5l")
+region = Rect2(0, 0, 32, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udsk3"]
+atlas = ExtResource("1_lyv5l")
+region = Rect2(32, 0, 32, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bnc8"]
+atlas = ExtResource("1_lyv5l")
+region = Rect2(64, 0, 32, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pem67"]
+atlas = ExtResource("1_lyv5l")
+region = Rect2(96, 0, 32, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2snj6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kkl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udsk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bnc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pem67")
+}],
+"loop": false,
+"name": &"pressed",
+"speed": 5.0
+}]
+
+[node name="button" type="AnimatedSprite2D"]
+position = Vector2(0, -21)
+sprite_frames = SubResource("SpriteFrames_2snj6")
+animation = &"pressed"
+frame = 3
+frame_progress = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bi8t4fu7u4qf7"]
+[gd_scene load_steps=12 format=3 uid="uid://bi8t4fu7u4qf7"]
 
 [ext_resource type="Texture2D" uid="uid://kd1k423r6jh3" path="res://Assets/Props/4 Animated objects/Entry.png" id="1_37fml"]
 
@@ -71,9 +71,18 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gkao"]
+size = Vector2(32, 64)
+
 [node name="door" type="AnimatedSprite2D"]
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_gppto")
 animation = &"open"
+autoplay = "close"
+frame = 3
+frame_progress = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_8gkao")

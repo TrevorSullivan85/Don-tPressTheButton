@@ -195,4 +195,4 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="door" parent="." instance=ExtResource("5_bi1xi")]
-position = Vector2(1008, 0)
+position = Vector2(1008, -32)

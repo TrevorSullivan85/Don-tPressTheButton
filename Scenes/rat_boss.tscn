@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdaui065h7pth"]
+
+[ext_resource type="Texture2D" uid="uid://85p2ljdc1j5q" path="res://icon.svg" id="1_p17uv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77lca"]
+size = Vector2(128, 126)
+
+[node name="rat_boss" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p17uv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_77lca")
+
+[node name="StateMachine" type="Node" parent="."]

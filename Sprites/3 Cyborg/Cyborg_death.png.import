@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyv7uc88dbkjs"
-path="res://.godot/imported/Cyborg_attack2.png-98b54ca1d9224c24ce28a83fbca35402.ctex"
+uid="uid://t11shmdg3m4i"
+path="res://.godot/imported/Cyborg_death.png-1c689a56b604ca33c4ff09b7fdf9eb01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://3 Cyborg/Cyborg_attack2.png"
-dest_files=["res://.godot/imported/Cyborg_attack2.png-98b54ca1d9224c24ce28a83fbca35402.ctex"]
+source_file="res://Sprites/3 Cyborg/Cyborg_death.png"
+dest_files=["res://.godot/imported/Cyborg_death.png-1c689a56b604ca33c4ff09b7fdf9eb01.ctex"]
 
 [params]
 

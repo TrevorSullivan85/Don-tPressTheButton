@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ci2g64xx4a03s"
-path="res://.godot/imported/Cyborg_punch.png-6dcbb4fa6c26311bac52602c7ae27a5f.ctex"
+path="res://.godot/imported/Cyborg_punch.png-fd5992ad273fa979499f5280939c123a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://3 Cyborg/Cyborg_punch.png"
-dest_files=["res://.godot/imported/Cyborg_punch.png-6dcbb4fa6c26311bac52602c7ae27a5f.ctex"]
+source_file="res://Sprites/3 Cyborg/Cyborg_punch.png"
+dest_files=["res://.godot/imported/Cyborg_punch.png-fd5992ad273fa979499f5280939c123a.ctex"]
 
 [params]
 

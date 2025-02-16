@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7fs6lib0vb2e"
-path="res://.godot/imported/Cyborg_idle.png-d715efed6afce2c33f258d3eaa086808.ctex"
+uid="uid://cxs1hvl8038yn"
+path="res://.godot/imported/Cyborg_attack3.png-7751ba728c44ec37dc8bdf1b708888ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://3 Cyborg/Cyborg_idle.png"
-dest_files=["res://.godot/imported/Cyborg_idle.png-d715efed6afce2c33f258d3eaa086808.ctex"]
+source_file="res://Sprites/3 Cyborg/Cyborg_attack3.png"
+dest_files=["res://.godot/imported/Cyborg_attack3.png-7751ba728c44ec37dc8bdf1b708888ac.ctex"]
 
 [params]
 

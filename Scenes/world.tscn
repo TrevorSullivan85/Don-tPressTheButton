@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://paj7okq3dr4r"]
+[gd_scene load_steps=10 format=3 uid="uid://paj7okq3dr4r"]
 
 [ext_resource type="Texture2D" uid="uid://cu82sm31oy5so" path="res://Assets/TileSets/IndustrialSpritesheet.png" id="1_q3js6"]
 [ext_resource type="Texture2D" uid="uid://dpnb5ddgk62os" path="res://Assets/Items/3 Objects/Locker4.png" id="2_cy4u6"]
 [ext_resource type="Texture2D" uid="uid://lwap53ig1wje" path="res://Assets/Items/3 Objects/Mop.png" id="2_kgjtv"]
 [ext_resource type="PackedScene" uid="uid://b6tcdlqqhja4i" path="res://Scenes/player.tscn" id="4_cq4jj"]
 [ext_resource type="PackedScene" uid="uid://bi8t4fu7u4qf7" path="res://Scenes/door.tscn" id="5_bi1xi"]
+[ext_resource type="Texture2D" uid="uid://cwnh383yu6poy" path="res://Assets/Items/3 Objects/Pointer1.png" id="5_mbaax"]
 [ext_resource type="PackedScene" uid="uid://cxjfkm2dryrps" path="res://Scenes/button.tscn" id="6_fpjlv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f4jtw"]
@@ -184,6 +185,10 @@ texture = ExtResource("2_kgjtv")
 position = Vector2(-111, -17)
 texture = ExtResource("2_cy4u6")
 
+[node name="Pointer1" type="Sprite2D" parent="Decor"]
+position = Vector2(229, -15)
+texture = ExtResource("5_mbaax")
+
 [node name="Player" parent="." instance=ExtResource("4_cq4jj")]
 z_index = 5
 position = Vector2(937, -7)
@@ -191,7 +196,7 @@ position = Vector2(937, -7)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -17)
 offset = Vector2(0, -30)
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
 

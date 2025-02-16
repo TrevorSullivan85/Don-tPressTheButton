@@ -18,9 +18,7 @@ func enter() -> void:
 	
 func process_physics(delta:float) -> State:
 	parent.velocity.y += gravity * delta
-	
-	if parent.velocity.y > 0:
-		return fall_state
+
 	
 	var movement = Input.get_axis("move_left", "move_right") * move_speed
 	
@@ -28,6 +26,10 @@ func process_physics(delta:float) -> State:
 		emit_signal("doubleJumpUsed")
 		double_jump = false
 		return double_jump_state
+	
+		
+	if parent.velocity.y > 0:
+		return fall_state
 	
 	if movement != 0:
 		if movement < 0:

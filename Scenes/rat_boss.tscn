@@ -14,3 +14,17 @@ texture = ExtResource("1_p17uv")
 shape = SubResource("RectangleShape2D_77lca")
 
 [node name="StateMachine" type="Node" parent="."]
+
+[node name="idle" type="Node" parent="StateMachine"]
+
+[node name="death" type="Node" parent="StateMachine"]
+
+[node name="move" type="Node" parent="StateMachine"]
+
+[node name="front_melee_attack" type="Node" parent="StateMachine"]
+
+[node name="missile_attack" type="Node" parent="StateMachine"]
+
+[node name="back_melee_attack" type="Node" parent="StateMachine"]
+
+[node name="running_melee_attack" type="Node" parent="StateMachine"]

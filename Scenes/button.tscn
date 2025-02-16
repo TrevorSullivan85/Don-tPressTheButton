@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxjfkm2dryrps"]
+[gd_scene load_steps=10 format=3 uid="uid://cxjfkm2dryrps"]
 
 [ext_resource type="Texture2D" uid="uid://bhimok7mc47gn" path="res://Assets/Props/4 Animated objects/Screen2.png" id="1_lyv5l"]
+[ext_resource type="Script" path="res://Scripts/button.gd" id="2_s6sb4"]
+[ext_resource type="PackedScene" uid="uid://dur5c37jnmjyx" path="res://Interaction/Interaction Area/interaction_area.tscn" id="3_yti0v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6kkl1"]
 atlas = ExtResource("1_lyv5l")
@@ -38,9 +40,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5kdki"]
+radius = 34.0
+
 [node name="button" type="AnimatedSprite2D"]
 position = Vector2(0, -21)
 sprite_frames = SubResource("SpriteFrames_2snj6")
 animation = &"pressed"
 frame = 3
 frame_progress = 1.0
+script = ExtResource("2_s6sb4")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_yti0v")]
+action_name = "push button"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_5kdki")

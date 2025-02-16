@@ -369,7 +369,7 @@ animations = [{
 radius = 7.0
 height = 31.82
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_c0pv5")
 
@@ -413,7 +413,7 @@ idle_state = NodePath("../idle")
 death_state = NodePath("../death")
 fall_state = NodePath("../fall")
 double_jump_state = NodePath("../double_jump")
-jump_force = 300.0
+jump_force = 320.0
 animation_name = "jump"
 move_speed = 200.0
 
@@ -441,7 +441,7 @@ run_state = NodePath("../move")
 idle_state = NodePath("../idle")
 death_state = NodePath("../death")
 fall_state = NodePath("../fall")
-jump_force = 300.0
+jump_force = 320.0
 animation_name = "double_jump"
 move_speed = 200.0
 

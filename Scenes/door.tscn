@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://bi8t4fu7u4qf7"]
+
+[ext_resource type="Texture2D" uid="uid://kd1k423r6jh3" path="res://Assets/Props/4 Animated objects/Entry.png" id="1_37fml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f3nr"]
+atlas = ExtResource("1_37fml")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dums6"]
+atlas = ExtResource("1_37fml")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxar3"]
+atlas = ExtResource("1_37fml")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4qch"]
+atlas = ExtResource("1_37fml")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf3kx"]
+atlas = ExtResource("1_37fml")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ovsm"]
+atlas = ExtResource("1_37fml")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2up0w"]
+atlas = ExtResource("1_37fml")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5k46"]
+atlas = ExtResource("1_37fml")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gppto"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3f3nr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dums6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxar3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4qch")
+}],
+"loop": false,
+"name": &"close",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf3kx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ovsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2up0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5k46")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[node name="door" type="AnimatedSprite2D"]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_gppto")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

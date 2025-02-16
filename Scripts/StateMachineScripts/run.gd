@@ -34,11 +34,13 @@ func process_physics(delta:float) -> State:
 	movement *= direction
 	
 	if movement != 0:
-		parent.get_node("AnimatedSprite2D").flip_h = movement < 0
 		if movement < 0:
-			parent.get_node("CollisionShape2D").position.x = 20.0
+			parent.get_node("AnimatedSprite2D").flip_h = true
+			parent.get_node("AnimatedSprite2D").offset.x = -18
 		else:
-			parent.get_node("CollisionShape2D").position.x = 0.0
+			parent.get_node("AnimatedSprite2D").flip_h = false
+			parent.get_node("AnimatedSprite2D").offset.x = 0
+			
 		
 		parent.velocity.x = movement
 		

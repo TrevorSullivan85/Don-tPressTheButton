@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://b6tcdlqqhja4i"]
+[gd_scene load_steps=61 format=3 uid="uid://b6tcdlqqhja4i"]
 
 [ext_resource type="Texture2D" uid="uid://cepydqjeao6cu" path="res://Sprites/2 Punk/Punk_death.png" id="1_3onqb"]
 [ext_resource type="Script" path="res://Scripts/StateMachineScripts/player.gd" id="1_c0pv5"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/StateMachineScripts/jump.gd" id="11_jjrv5"]
 [ext_resource type="Script" path="res://Scripts/StateMachineScripts/fall.gd" id="12_pwh4p"]
 [ext_resource type="Script" path="res://Scripts/StateMachineScripts/death.gd" id="13_noskb"]
+[ext_resource type="Script" path="res://Scenes/double_jump.gd" id="15_lr7u4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dftmq"]
 atlas = ExtResource("1_3onqb")
@@ -208,7 +209,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rek3p")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 10.0
 }, {
@@ -231,7 +232,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wd2dy")
 }],
-"loop": true,
+"loop": false,
 "name": &"double_jump",
 "speed": 10.0
 }, {
@@ -376,8 +377,6 @@ position = Vector2(10, -24)
 sprite_frames = SubResource("SpriteFrames_uiavr")
 animation = &"fall"
 autoplay = "idle"
-frame = 1
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16.275)
@@ -406,22 +405,24 @@ run_state = NodePath(".")
 animation_name = "move"
 move_speed = 200.0
 
-[node name="jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("run_state", "idle_state", "death_state", "fall_state")]
+[node name="jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("run_state", "idle_state", "death_state", "fall_state", "double_jump_state")]
 script = ExtResource("11_jjrv5")
 run_state = NodePath("../move")
 idle_state = NodePath("../idle")
 death_state = NodePath("../death")
 fall_state = NodePath("../fall")
+double_jump_state = NodePath("../double_jump")
 jump_force = 300.0
 animation_name = "jump"
 move_speed = 200.0
 
-[node name="fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("run_state", "idle_state", "death_state", "jump_state")]
+[node name="fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("run_state", "idle_state", "death_state", "jump_state", "double_jump_state")]
 script = ExtResource("12_pwh4p")
 run_state = NodePath("../move")
 idle_state = NodePath("../idle")
 death_state = NodePath("../death")
 jump_state = NodePath("../jump")
+double_jump_state = NodePath("../double_jump")
 animation_name = "fall"
 move_speed = 200.0
 
@@ -432,3 +433,15 @@ move_speed = 200.0
 
 [node name="deathTimer" type="Timer" parent="StateMachine/death"]
 wait_time = 4.0
+
+[node name="double_jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("run_state", "idle_state", "death_state", "fall_state")]
+script = ExtResource("15_lr7u4")
+run_state = NodePath("../move")
+idle_state = NodePath("../idle")
+death_state = NodePath("../death")
+fall_state = NodePath("../fall")
+jump_force = 300.0
+animation_name = "double_jump"
+move_speed = 200.0
+
+[connection signal="doubleJumpUsed" from="StateMachine/jump" to="StateMachine/fall" method="_on_jump_double_jump_used"]

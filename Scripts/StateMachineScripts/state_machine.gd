@@ -3,6 +3,7 @@ extends Node
 @export var starting_state : State
 
 var current_state: State
+var double_jump:= true
 
 func init(parent: CharacterBody2D) -> void:
 	for child in get_children():

@@ -10,7 +10,7 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var parent: CharacterBody2D
 
 func enter() -> void:
-	parent.get_child(0).play(animation_name)
+	parent.get_node("AnimatedSprite2D").play(animation_name)
 
 func exit() -> void:
 	pass

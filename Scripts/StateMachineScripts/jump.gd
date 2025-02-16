@@ -20,7 +20,7 @@ func process_physics(delta:float) -> State:
 	var movement = Input.get_axis("move_left", "move_right") * move_speed
 	
 	if movement != 0:
-		parent.get_child(0).flip_h = movement < 0
+		parent.get_node("AnimatedSprite2D").flip_h = movement < 0
 	parent.velocity.x = movement
 	parent.move_and_slide()
 	

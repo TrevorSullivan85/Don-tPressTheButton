@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/StateMachineScripts/jump.gd" id="11_jjrv5"]
 [ext_resource type="Script" path="res://Scripts/StateMachineScripts/fall.gd" id="12_pwh4p"]
 [ext_resource type="Script" path="res://Scripts/StateMachineScripts/death.gd" id="13_noskb"]
-[ext_resource type="Script" path="res://Scenes/double_jump.gd" id="15_lr7u4"]
+[ext_resource type="Script" path="res://Scripts/StateMachineScripts/double_jump.gd" id="15_lr7u4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dftmq"]
 atlas = ExtResource("1_3onqb")

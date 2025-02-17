@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://paj7okq3dr4r"]
+[gd_scene load_steps=11 format=3 uid="uid://paj7okq3dr4r"]
 
 [ext_resource type="Texture2D" uid="uid://cu82sm31oy5so" path="res://Assets/TileSets/IndustrialSpritesheet.png" id="1_q3js6"]
 [ext_resource type="Texture2D" uid="uid://dpnb5ddgk62os" path="res://Assets/Items/3 Objects/Locker4.png" id="2_cy4u6"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bi8t4fu7u4qf7" path="res://Scenes/door.tscn" id="5_bi1xi"]
 [ext_resource type="Texture2D" uid="uid://cwnh383yu6poy" path="res://Assets/Items/3 Objects/Pointer1.png" id="5_mbaax"]
 [ext_resource type="PackedScene" uid="uid://cxjfkm2dryrps" path="res://Scenes/button.tscn" id="6_fpjlv"]
+[ext_resource type="PackedScene" uid="uid://cdaui065h7pth" path="res://Scenes/rat_boss.tscn" id="8_2hpjb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f4jtw"]
 texture = ExtResource("1_q3js6")
@@ -205,3 +206,6 @@ position = Vector2(1008, -32)
 
 [node name="button" parent="." instance=ExtResource("6_fpjlv")]
 position = Vector2(208, -20)
+
+[node name="rat_boss" parent="." instance=ExtResource("8_2hpjb")]
+position = Vector2(-653, -47.825)

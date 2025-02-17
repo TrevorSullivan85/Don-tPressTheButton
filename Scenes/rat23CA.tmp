@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cdaui065h7pth"]
+[gd_scene load_steps=52 format=3 uid="uid://cdaui065h7pth"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachineScripts/rat_boss/rat_boss.gd" id="1_nlwgk"]
 [ext_resource type="Texture2D" uid="uid://dj1171wtaeacc" path="res://Sprites/RatBoss/1/Attack1.png" id="1_wfqkg"]
@@ -11,8 +11,6 @@
 [ext_resource type="Script" path="res://Scripts/StateMachineScripts/rat_boss/rat_state_machine.gd" id="8_2pvp5"]
 [ext_resource type="Script" path="res://Scripts/StateMachineScripts/rat_boss/rat_idle.gd" id="9_5qr7x"]
 [ext_resource type="Script" path="res://Scripts/StateMachineScripts/rat_boss/rat_run.gd" id="10_lfgsw"]
-[ext_resource type="Script" path="res://Scenes/melee.gd" id="12_uj16w"]
-[ext_resource type="Script" path="res://Scenes/missile.gd" id="13_o8j8h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hiw5"]
 atlas = ExtResource("1_wfqkg")
@@ -309,7 +307,7 @@ radius = 20.0
 height = 61.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cs1qw"]
-radius = 17.2627
+radius = 35.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o6ief"]
 radius = 34.0
@@ -320,7 +318,7 @@ script = ExtResource("1_nlwgk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_df5i5")
-animation = &"missile_shoot"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(7, 28.825)
@@ -336,53 +334,33 @@ script = ExtResource("9_5qr7x")
 run_state = NodePath("../move")
 animation_name = "idle"
 
-[node name="move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "front_melee_state", "missile_state")]
+[node name="move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("10_lfgsw")
 idle_state = NodePath("../idle")
-front_melee_state = NodePath("../melee")
-missile_state = NodePath("../missile")
 animation_name = "run"
-move_speed = 200.0
-
-[node name="melee" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
-script = ExtResource("12_uj16w")
-idle_state = NodePath("../idle")
-animation_name = "front_melee"
-
-[node name="missile" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
-script = ExtResource("13_o8j8h")
-idle_state = NodePath("../idle")
-animation_name = "missile_shoot"
+move_speed = 220.0
 
 [node name="frontMelee" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="frontMelee"]
-position = Vector2(38, 31.825)
+position = Vector2(39, 31.825)
 shape = SubResource("CircleShape2D_cs1qw")
 
 [node name="backMelee" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="backMelee"]
 position = Vector2(-30, 28.825)
 shape = SubResource("CircleShape2D_o6ief")
 
 [node name="runningTimer" type="Timer" parent="."]
-wait_time = 4.0
-one_shot = true
+wait_time = 10.0
 
 [node name="idleTimer" type="Timer" parent="."]
 wait_time = 4.0
-one_shot = true
 
 [connection signal="area_entered" from="frontMelee" to="StateMachine/idle" method="_on_front_melee_area_entered"]
 [connection signal="area_exited" from="frontMelee" to="StateMachine/idle" method="_on_front_melee_area_exited"]
-[connection signal="body_entered" from="frontMelee" to="StateMachine/move" method="_on_front_melee_body_entered"]
 [connection signal="body_entered" from="frontMelee" to="StateMachine/idle" method="_on_front_melee_body_entered"]
-[connection signal="body_exited" from="frontMelee" to="StateMachine/move" method="_on_front_melee_body_exited"]
 [connection signal="body_exited" from="frontMelee" to="StateMachine/idle" method="_on_front_melee_body_exited"]
 [connection signal="area_entered" from="backMelee" to="StateMachine/idle" method="_on_back_melee_area_entered"]
 [connection signal="area_exited" from="backMelee" to="StateMachine/idle" method="_on_back_melee_area_exited"]

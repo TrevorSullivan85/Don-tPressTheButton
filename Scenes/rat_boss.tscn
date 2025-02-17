@@ -1,5 +1,6 @@
-[gd_scene load_steps=51 format=3 uid="uid://cdaui065h7pth"]
+[gd_scene load_steps=52 format=3 uid="uid://cdaui065h7pth"]
 
+[ext_resource type="Script" path="res://Scenes/rat_boss.gd" id="1_nlwgk"]
 [ext_resource type="Texture2D" uid="uid://dj1171wtaeacc" path="res://Sprites/RatBoss/1/Attack1.png" id="1_wfqkg"]
 [ext_resource type="Texture2D" uid="uid://bajj6hnj85141" path="res://Sprites/RatBoss/1/Death.png" id="2_5l2rv"]
 [ext_resource type="Texture2D" uid="uid://c04vpte0q1w2n" path="res://Sprites/RatBoss/1/Attack3.png" id="3_4y05a"]
@@ -7,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cqwfto76v5nxw" path="res://Sprites/RatBoss/1/Attack2.png" id="5_6q1jm"]
 [ext_resource type="Texture2D" uid="uid://bm7buoqutnki8" path="res://Sprites/RatBoss/1/Walk.png" id="6_alff2"]
 [ext_resource type="Texture2D" uid="uid://dgk66a458xbg6" path="res://Sprites/RatBoss/1/Attack4.png" id="7_8aidu"]
-[ext_resource type="Script" path="res://Scripts/StateMachineScripts/player/state_machine.gd" id="8_ipx8s"]
-[ext_resource type="Script" path="res://Scenes/rat_idle.gd" id="9_5qr7x"]
-[ext_resource type="Script" path="res://Scenes/rat_run.gd" id="10_lfgsw"]
+[ext_resource type="Script" path="res://Scenes/rat_state_machine.gd" id="8_2pvp5"]
+[ext_resource type="Script" path="res://Scripts/StateMachineScripts/rat_boss/rat_idle.gd" id="9_5qr7x"]
+[ext_resource type="Script" path="res://Scripts/StateMachineScripts/rat_boss/rat_run.gd" id="10_lfgsw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hiw5"]
 atlas = ExtResource("1_wfqkg")
@@ -313,37 +314,30 @@ radius = 26.0
 
 [node name="rat_boss" type="CharacterBody2D"]
 position = Vector2(0, -48.825)
+script = ExtResource("1_nlwgk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_df5i5")
-animation = &"back_melee"
-autoplay = "idle"
-frame = 5
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(7, 28.825)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_2u5gm")
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("8_ipx8s")
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("8_2pvp5")
+starting_state = NodePath("idle")
 
-[node name="idle" type="Node" parent="StateMachine"]
+[node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("run_state")]
 script = ExtResource("9_5qr7x")
+run_state = NodePath("../move")
+animation_name = "idle"
 
-[node name="death" type="Node" parent="StateMachine"]
-
-[node name="move" type="Node" parent="StateMachine"]
+[node name="move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("10_lfgsw")
-
-[node name="front_melee_attack" type="Node" parent="StateMachine"]
-
-[node name="missile_attack" type="Node" parent="StateMachine"]
-
-[node name="back_melee_attack" type="Node" parent="StateMachine"]
-
-[node name="running_melee_attack" type="Node" parent="StateMachine"]
+idle_state = NodePath("../idle")
+animation_name = "move"
 
 [node name="frontMelee" type="Area2D" parent="."]
 
@@ -360,6 +354,9 @@ shape = SubResource("CircleShape2D_o6ief")
 [node name="runningTimer" type="Timer" parent="."]
 wait_time = 4.0
 
+[node name="idleTimer" type="Timer" parent="."]
+wait_time = 4.0
+
 [connection signal="area_entered" from="frontMelee" to="StateMachine/idle" method="_on_front_melee_area_entered"]
 [connection signal="area_exited" from="frontMelee" to="StateMachine/idle" method="_on_front_melee_area_exited"]
 [connection signal="body_entered" from="frontMelee" to="StateMachine/idle" method="_on_front_melee_body_entered"]
@@ -369,3 +366,5 @@ wait_time = 4.0
 [connection signal="body_entered" from="backMelee" to="StateMachine/idle" method="_on_back_melee_body_entered"]
 [connection signal="body_exited" from="backMelee" to="StateMachine" method="_on_back_melee_body_exited"]
 [connection signal="body_exited" from="backMelee" to="StateMachine/idle" method="_on_back_melee_body_exited"]
+[connection signal="timeout" from="runningTimer" to="StateMachine/move" method="_on_running_timer_timeout"]
+[connection signal="timeout" from="idleTimer" to="StateMachine/idle" method="_on_idle_timer_timeout"]

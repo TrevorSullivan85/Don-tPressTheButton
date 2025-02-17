@@ -7,7 +7,7 @@ var current_state: State
 func init(parent: CharacterBody2D) -> void:
 	for child in get_children():
 		child.parent = parent
-		print(child)
+		
 		change_state(starting_state)
 		
 func change_state(new_state: State) -> void:

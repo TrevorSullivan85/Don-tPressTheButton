@@ -10,11 +10,13 @@ extends State
 
 var front_melee : bool = false
 var back_melee : bool = false
+var missile : bool = false
 
 
 func enter() -> void:
 	super()
 	parent.velocity.x = 0
+	parent.get_node("idleTimer").start()
 	
 	
 	
@@ -25,12 +27,13 @@ func process_physics(delta:float) -> State:
 	return null
 	
 func process_frame(delta:float) -> State:
-	await get_tree().create_timer(4).timeout
 	if front_melee:
-		front_melee_state
+		return front_melee_state
 	elif back_melee:
 		return back_melee_state
-	return missile_state	
+	elif missile:
+		return missile_state
+	return null
 	
 
 # funcs to check if player is in range of quick melee attacks
@@ -44,3 +47,7 @@ func _on_back_melee_body_exited(body: Node2D) -> void:
 	back_melee = true
 
 	
+
+
+func _on_idle_timer_timeout() -> void:
+	missile = true

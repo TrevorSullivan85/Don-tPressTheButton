@@ -3,7 +3,6 @@ extends State
 
 @export var idle_state: State
 @export var death_state: State
-@export var run_state: State
 
 @onready var player = get_tree().get_first_node_in_group("player")
 
@@ -11,6 +10,7 @@ var keep_running : bool = true
 
 func enter() -> void:
 	super()
+	parent.get_node("runningTimer").start()
 
 	
 func process_physics(delta:float) -> State:
@@ -18,12 +18,14 @@ func process_physics(delta:float) -> State:
 	
 	var movement = move_speed
 	var direction = 0
-	if player.global_position.x - self.global_position.x > 0:
-		direction = 1
+	if keep_running:
+		if player.global_position.x - self.global_position.x > 0:
+			direction = 1
+		else:
+			direction = -1
+		movement *= direction
 	else:
-		direction = -1
-	
-	movement *= direction
+		movement = 0;
 	
 	if movement != 0:
 		if movement < 0:
@@ -44,3 +46,7 @@ func process_frame(delta: float) -> State:
 	return null
 
 		
+
+
+func _on_running_timer_timeout() -> void:
+	keep_running = false
